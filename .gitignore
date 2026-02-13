@@ -1,0 +1,23 @@
+ALX_Simple_Quiz/
+Form-Creation-Validation/
+GitHubCloneProject/
+JS-Fundamentals/
+LocalRepoProject/
+TechCon_HTML/
+alx program/
+alx-fe-reactjs/
+alx_fe_javascript/
+alx_html_css/
+backup/
+dom-manipulation/
+dynamic-to-do-list-js/
+headphones-js/
+html_basic/
+js-basics/
+my-app/
+
+# Node modules
+node_modules/
+build/
+.env
+.DS_Store
