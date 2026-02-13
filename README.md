@@ -17,5 +17,5 @@
 #Tailwind CSS
 #Movie database API (TMBD)
 #npm package management
-#Git
+#Git 
 
