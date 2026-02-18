@@ -1,22 +1,28 @@
 import axios from 'axios'
 
-const API_KEY = process.env.REACT_APP_TMBD_API_KEY;
+const API_ACCESS_TOKEN = process.env.REACT_APP_API_ACCESS_TOKEN;
 const BASE_URL = 'https://api.themoviedb.org/3';
-const IMG_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original';
 
 export default axios.create({
   baseURL: BASE_URL,
-  params: {
-	api_key: API_KEY
+  headers: {
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${API_ACCESS_TOKEN}`
   }
 });
 
-export const fetchPopularMovies = () => {
-  return axios.fectch(`${BASE_URL}/movie/popular`, {
-    params: {
-      api_key: API_KEY
-    }
-  });
+
+export async function fetchPopularMovies() {
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/popular?api_key=ae79912837f7e732ceea98f48a3f9978`);
+    const data = await response.data;
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.error("Error fetching movies", error);
+    throw error;
+  }
 };
 
 export async function fetchsearchBar(id) {
@@ -24,7 +30,6 @@ export async function fetchsearchBar(id) {
   try {
     const response = await axios.fetch(`${BASE_URL}/search/movie`, {
       params: {
-        api_key: API_KEY,
         query: id
       }
     });
@@ -38,11 +43,7 @@ export async function fetchsearchBar(id) {
 
 export async function fetchmoviedetails(id) {
   try {
-    const response = await axios.fetch(`${BASE_URL}/movie/${id}`, {
-      params: {
-        api_key: API_KEY
-      }
-    });
+    const response = await axios.fetch(`${BASE_URL}/movie/${id}`);
     return response;
   }
   catch (error) {
