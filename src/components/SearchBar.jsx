@@ -14,9 +14,20 @@ onSeacrh (query);
 }}};
 
 retun (
-    <div className=""
+    <div className="w-full px-6 px-4 max-w-xl mx-auto">
+    <form onSubmit ={handleSubmit} className='relative'>
+    <input 
+    type="text"
+    value={query}
+    onChnge={(e) => setQuery(e.target.value)}
+    className="w-full px-6 px-4 max-w-xl mx-auto tx-lg rounded-full border-gray-200">
 
-     >
+
+
+    </input>
+    </form>
+
+     
 
      </div>
 )
