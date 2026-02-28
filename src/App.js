@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './film.png';
 import './App.css';
 import MovieList from './components/MovieList';
 import Nav from './components/Nav';
