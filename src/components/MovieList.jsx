@@ -37,7 +37,7 @@ function MovieList() {
         <div className="columns-4 gap-4">
             {/* <p>This is the movie list component</p> */}
         {data.results.map((item) => (
-            <MovieCard movie={item}/>
+            <MovieCard key={item.id} movie={item}/>
         ))}
             {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
         </div> 
