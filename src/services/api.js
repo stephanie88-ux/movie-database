@@ -16,9 +16,8 @@ export default axios.create({
 export async function fetchPopularMovies() {
   try {
     const response = await axios.get(`${BASE_URL}/movie/popular?api_key=ae79912837f7e732ceea98f48a3f9978`);
-    const data = await response.data;
-    console.log(data)
-    return data;
+    console.log(response)
+    return response;
   } catch (error) {
     console.error("Error fetching movies", error);
     throw error;
@@ -43,7 +42,11 @@ export async function fetchsearchBar(id) {
 
 export async function fetchmoviedetails(id) {
   try {
-    const response = await axios.fetch(`${BASE_URL}/movie/${id}`);
+    const response = await axios.get(`${BASE_URL}/movie/${id}`, {
+      params: {
+        api_key:"ae79912837f7e732ceea98f48a3f9978"
+      }
+    });
     return response;
   }
   catch (error) {
@@ -53,5 +56,18 @@ export async function fetchmoviedetails(id) {
 };
 
 
-
-
+export async function fetchSearchResults(query) {
+  try {
+    const response = await axios.get(`${BASE_URL}/search/movie`, {
+      params: {
+        query: query,
+        api_key:"ae79912837f7e732ceea98f48a3f9978"
+      }
+    });
+    return response;
+  }
+  catch (error) {
+    console.error('Error searching for movie:', error);
+    throw error;
+  }
+};
