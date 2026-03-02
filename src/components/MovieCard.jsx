@@ -1,12 +1,19 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { IMG_BASE_URL } from '../services/api';
 
 function MovieCard({movie}) {
-    const imageUrl = `${IMG_BASE_URL}${movie.backdrop_path}`; 
+    let imageUrl;
+    if (movie.backdrop_path) {
+        imageUrl = `${IMG_BASE_URL}${movie.backdrop_path}`; 
+    } else {
+        imageUrl = `https://placehold.co/600x400/EEE/31343C`;
+    }
+
+
     return (
-        <div  key={movie.id} className="font-bold bg-white shadow-lg rounded-lg mb-6 w-54 outline outline-offset-0 outline-pink-500">
-        <img src={imageUrl} />
+        <div  key={movie.id} className="font-bold bg-white shadow-lg rounded-lg pb-6 mb-6 w-54 outline outline-offset-0 outline-pink-500">
+        <img src={imageUrl} alt={movie.title} />
          <ul className='p-4'>
             <li className='text-orange-500'>{movie.title}</li>
             <li className='flex items-center'>{movie.vote_average} 
@@ -16,7 +23,7 @@ function MovieCard({movie}) {
             </li>
             <li>{movie.original_language}</li>
          </ul>
-         
+         <Link className='p-4 mb-2 text-blue-400' to={`/movie/${movie.id}`}>View Details</Link>
       </div>
          
     );   
